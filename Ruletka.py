@@ -9,27 +9,30 @@ DISCRIPTION:
 Пользователю даётся 5 попыток угадать номер и цвет.
 В случае неудачи вывети на экран правильную комбинацию."""
 
-for z in range(1, 6):
-    import random
-    while z <= 6:
-        i = random.randrange(1, 11)
-        j = random.randrange(1, 2)
-        x = int(input('Введите номер от 1 до 10: '))
+import random
+count = int(input("Сколько раз вы хотите попытать счастье?: "))
+posb = 0
+while posb <= count:
+    i = random.randrange(1, 37)
+    j = random.randrange(1, 3)
+    x = int(input('Введите номер от 1 до 36: '))
+    y = int(input('Введите цвет: 1 - красный, 2 - чёрный: '))
+    while (x > 36) or (y > 2):
+        print("введены не верные цифры")
+        x = int(input('Введите номер от 1 до 36: '))
         y = int(input('Введите цвет: 1 - красный, 2 - чёрный: '))
-        while (x > 10) and (y > 2):
-            print("введены не верные цифры")
-            break
-        if x == i and j == y:
-            print("Вы угадали!")
-            break
-        else:
-            if j == 1:
-                print("Вы не угадали! Правильаня комбинация:" + str(i),
-                      'красный')
-                z += 1
-            else:
-                print("Вы не угадали! Правильаня комбинация:" + str(i),
-                      'чёрный')
-                z += 1
-    if z == 6:
+    if x == i and j == y:
+        print("Вы угадали!")
         break
+    else:
+        if j == 1:
+            print("Вы не угадали! Правильаня комбинация:" + str(i),
+                  'красный')
+            posb += 1
+        else:
+            print("Вы не угадали! Правильаня комбинация:" + str(i),
+                  'чёрный')
+            posb += 1
+    if posb == count:
+            break
+
